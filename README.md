@@ -6,11 +6,10 @@ Projeto Unity **6000.0.8f1** (URP) do 1º bimestre, feito com base no `gdd.pdf`.
 
 1. No Unity Hub, clique em **Add → Add project from disk** e escolha a pasta `SementeDaAurora`.
 2. Abra o projeto com o editor **6000.0.8f1**.
-3. Na primeira abertura, o script `Assets/Editor/ConstrutorDoProjeto.cs` roda sozinho e cria
-   as tags, o URP, os materiais, os prefabs, o Animator, as 3 cenas e o Build Settings.
-   Uma barra de progresso aparece e o Console mostra *"Projeto construído"*.
-   - Se isso não acontecer, use o menu **Semente da Aurora → Construir Projeto**.
-4. Abra `Assets/Cenas/MenuInicial.unity` e aperte **Play**.
+3. Abra `Assets/Cenas/MenuInicial.unity` e aperte **Play**.
+
+As cenas, prefabs, materiais, tags e o Build Settings já estão prontos no repositório.
+Na primeira abertura a Unity só reconstrói a pasta `Library` (pode demorar alguns minutos).
 
 > Se o Unity perguntar sobre o *Active Input Handling*, escolha **Input Manager (Old)** ou **Both**.
 > Os scripts usam o `Input` clássico, como nos tutoriais da disciplina.
@@ -31,14 +30,14 @@ Projeto Unity **6000.0.8f1** (URP) do 1º bimestre, feito com base no `gdd.pdf`.
 ```
 Assets/
   Scripts/        scripts do jogo (documentados com ///)
-  Editor/         ConstrutorDoProjeto.cs (gera cenas, prefabs e materiais)
-  Cenas/          MenuInicial, Introducao, Nivel1  (gerados)
-  Prefabs/        casas, moinho, poço, barris, árvores, runas...  (gerados)
-  Prefabs/Mudas/  5 flores/mudas do vetor de spawn  (gerados)
-  Materiais/      materiais URP Lit, partículas e céus  (gerados)
-  Animacoes/      Bran.controller: estados Parado, Andando, Correndo, Pulando, Caindo  (gerado)
+  Editor/         TrocarAssets e LimparPacks (ferramentas de editor já usadas na troca dos modelos)
+  Cenas/          MenuInicial, Introducao, Nivel1
+  Prefabs/        casas, moinho, poço, barris, árvores, runas...
+  Prefabs/Mudas/  5 flores/mudas do vetor de spawn
+  Materiais/      materiais URP Lit, partículas e céus
+  Animacoes/      Bran.controller: estados Parado, Andando, Correndo, Pulando, Caindo
   Audio/          musica.wav, queda.wav, impacto.wav, restauracao.wav (placeholders)
-  Resources/      AudioManager.prefab (sons configurados)  (gerado)
+  Resources/      AudioManager.prefab (sons configurados)
 ```
 
 | Script | O que faz |
@@ -74,10 +73,11 @@ Alcance do pulo com os valores padrão: cerca de 4 m andando e 7 m correndo, no 
 Para ajustar a dificuldade, mova as plataformas na cena ou mude `forcaPulo`, `velocidadeAndar` e
 `velocidadeCorrer` no `PlayerController`.
 
-## Placeholders: o que trocar
+## Modelos e sons: o que trocar
 
-Todos os modelos são **primitivas do Unity** (cubos, cilindros, esferas) e os sons foram gerados
-por código. A lógica não depende deles, então dá para trocar sem mexer nos scripts:
+Os modelos vêm dos packs da Asset Store em `Assets/` (Polytope Studio, Farland Skies, GVOZDY etc.)
+e os sons ainda são placeholders gerados por código. A lógica não depende deles, então dá para
+trocar sem mexer nos scripts:
 
 - **Bran (Mixamo):** coloque o modelo como filho de `Bran/Modelo` (ou troque o `Modelo` inteiro),
   mantenha o `Animator` com `Assets/Animacoes/Bran.controller` e arraste os clipes do Mixamo para os
@@ -88,10 +88,6 @@ por código. A lógica não depende deles, então dá para trocar sem mexer nos 
   `prefabsMudas` do objeto `SpawnerMudas` na cena.
 - **Sons:** troque os clipes no prefab `Assets/Resources/AudioManager`.
 - **Textos das runas:** cada `PedraRunica` na cena tem o campo `texto` no Inspector.
-
-**Atenção:** *Semente da Aurora → Construir Projeto* **recria as 3 cenas** (perde o que foi editado
-nelas). Materiais, prefabs, o Animator e o AudioManager que já existem são mantidos.
-Depois de começar a editar as cenas à mão, não rode o construtor de novo.
 
 ## Tags
 
